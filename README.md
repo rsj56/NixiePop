@@ -1,18 +1,11 @@
-# NixiePop
+# NixiePop_VFD
 
-NixiePop is a four digit intelligent Nixie tube display that can be controlled over a serial link.
+This is a fork of NixiePop by impressivemachines. It is meant for personal use only. This repo is not maintained.
 
-- Four digit Nixie tube display
-- High quality gold plated surface mount PCB
-- Easily controlled by a serial line from the Arduino or any micro-controller or laptop to display any digits
-- The board can also function as a stand-alone voltmeter
-- Based on the familiar ATMega328
-- Comes pre-programmed with open source display software
-- Easily customized via the ISP port using standard tools
-- Most spare micro-controller pins are accessible at the connector
-- RGB LED back-lighting on each tube independently programmable to generate multiple colors
-- The colon indicator can also be turned on and off
-- Runs from 9-12V
-- Based on plug-in IN-4 Nixies
+My father had purchased a NixiePop and wanted to use it to display spindle speed on a CNC mill. I modified the C source to eliminate serial communications and automatically scale a voltage signal from the VFD to a rotation rate in RPM. 
 
-This repository includes the schematic and controller source code.
+In the extremely unlikely case someone has this same use scenario, the signal from the VFD is measured at ADC6. 5 V is scaled to 8000 RPM (8000 on the display). 
+
+While I do not intend on maintaining this repo in any way, if you have questions about how you can make similar modifications yourself, I am happy to help.
+
+I have added over-the-top documentation to the C source to help those who are not familiar with AVR. 
