@@ -176,9 +176,9 @@ int main(void)
 
 	for(i=0; i<4; i++)
 	{
-		g_r[i] = 0x80;
-		g_g[i] = 0x80;
-		g_b[i] = 0x80;
+		g_r[i] = 0xff;
+		g_g[i] = 0x00;
+		g_b[i] = 0x00;
 		g_digit[i] = 0xf;
 	}
 
@@ -208,12 +208,8 @@ int main(void)
 		while(ADCSRA & 0x40); /// Waits until the ADC says it has finished
 
 		u16 result = ADC; /// Store the result from the ADC
-		u32 val = result * 5005UL;///     \ This basically converts our measured
-		val = val / 1024UL;       ///     / value into a number in millivolts
-
-        val = val * 1600UL; /// THIS IS THE IMPORTANT NUMBER FOR YOU. THIS IS
-                            /// THE SCALING FACTOR -- IT SHOULD BE TWICE THE
-                            /// RPM/V NUMBER
+		u32 val = result * 8008UL;///     \ This converts the voltage to RPM
+		val = val / 1024UL;       ///     / (0 V -> 0 RPM, 5 V -> 8008 RPM)
 
         /// This is all pretty clear - basically finding the value of each
         /// digit and sending it to the tubes for display.
